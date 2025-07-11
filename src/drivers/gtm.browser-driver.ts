@@ -402,7 +402,8 @@ export default class GTMBrowserDriver implements AnalyticsDriver {
         'ct': payload.city ?? '',              // Lowercase customer city name
         'st': payload.province ?? '',                     // Lowercase customer state (province) name
         'zp': payload.zipCode ?? '',                  // Zip code (numbers only)
-        'country': payload.country ?? ''                 // Lowercase, 2-digit country code slug
+        'country': payload.country ?? '',                 // Lowercase, 2-digit country code slug
+        'is_premium': payload.isPremium ?? ''             // customer belongs to F&F benefit program
       }
     })
   }
@@ -418,7 +419,7 @@ export default class GTMBrowserDriver implements AnalyticsDriver {
       user_id: data.user_id || '',
       client_id: data.client_id || data.id || '',
       ...(data.eventId ? { event_id: data.eventId} : {}),
-      is_premium: data.isPremium || '',
+      isPremium: data.isPremium || '',
     })
   }
 
